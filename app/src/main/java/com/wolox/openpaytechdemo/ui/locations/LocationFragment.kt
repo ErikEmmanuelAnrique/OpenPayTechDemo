@@ -1,19 +1,19 @@
-package com.wolox.openpaytechdemo.ui.profile
+package com.wolox.openpaytechdemo.ui.locations
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.wolox.openpaytechdemo.databinding.FragmentProfileBinding
+import com.wolox.openpaytechdemo.databinding.FragmentLocationsBinding
 
-class ProfileFragment : Fragment() {
+class LocationFragment : Fragment() {
 
-    private lateinit var binding: FragmentProfileBinding
-    private val viewModel: ProfileViewModel by viewModels()
+    private lateinit var binding: FragmentLocationsBinding
+    private val viewModel : LocationViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
-        binding = FragmentProfileBinding.inflate(layoutInflater)
+        binding = FragmentLocationsBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
     }
 

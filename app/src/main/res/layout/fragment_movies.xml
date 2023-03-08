@@ -4,13 +4,37 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/popularMoviesLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/title_size"
+        android:textColor="@color/black"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:text="@string/popular_movies_label"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/popularMoviesCarousel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/popularMoviesLabel" />
+
+    <TextView
+        android:id="@+id/topRatedMoviesLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/title_size"
+        android:textColor="@color/black"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:text="@string/top_rated_movies_label"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        app:layout_constraintTop_toBottomOf="@id/popularMoviesCarousel"
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/topRatedMoviesCarousel"
@@ -18,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/popularMoviesCarousel" />
+        app:layout_constraintTop_toBottomOf="@id/topRatedMoviesLabel" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
