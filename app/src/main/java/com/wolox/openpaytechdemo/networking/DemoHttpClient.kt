@@ -1,23 +1,23 @@
 package com.wolox.openpaytechdemo.networking
 
-import java.util.concurrent.TimeUnit
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object DemoHttpClient {
 
-    private const val
+    private const val BASE_URL = "https://api.themoviedb.org/"
 
-    val httpClient = Retrofit
+    private val httpClient = Retrofit
         .Builder()
-        .baseUrl("")
+        .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
     fun getClient(): Retrofit {
         val mOkHttpClient = OkHttpClient
-            .Builder().build()
+            .Builder()
+            .build()
 
         return httpClient
             .newBuilder()
