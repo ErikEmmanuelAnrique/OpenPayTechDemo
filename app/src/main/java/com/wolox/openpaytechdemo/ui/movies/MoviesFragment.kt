@@ -19,6 +19,7 @@ class MoviesFragment : Fragment() {
         binding = FragmentMoviesBinding.inflate(layoutInflater)
         viewModel.getMovies()
         with(binding) {
+            //TODO paging and store locally
             val popularMoviesObserver = Observer<List<Movie>> {
                 popularMoviesCarousel.adapter = MoviesListAdapter(it)
             }
