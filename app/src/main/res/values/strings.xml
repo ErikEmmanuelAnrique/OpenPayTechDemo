@@ -1,10 +1,9 @@
 <resources>
     <string name="app_name">OpenPay Tech Demo</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
     <string name="title_profile">Profile</string>
     <string name="title_movies">Movies</string>
     <string name="popular_movies_label">Most Popular</string>
     <string name="top_rated_movies_label">Top Rated</string>
+    <string name="title_locations">Locations</string>
+    <string name="title_upload">Upload</string>
 </resources>

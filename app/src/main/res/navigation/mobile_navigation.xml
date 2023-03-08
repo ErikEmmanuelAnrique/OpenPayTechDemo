@@ -12,16 +12,16 @@
         tools:layout="@layout/fragment_movies" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.wolox.openpaytechdemo.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_locations"
+        android:name="com.wolox.openpaytechdemo.ui.locations.LocationFragment"
+        android:label="@string/title_locations"
+        tools:layout="@layout/fragment_locations" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.wolox.openpaytechdemo.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_upload"
+        android:name="com.wolox.openpaytechdemo.ui.upload.UploadFragment"
+        android:label="@string/title_upload"
+        tools:layout="@layout/fragment_upload" />
 
     <fragment
         android:id="@+id/navigation_profile"
