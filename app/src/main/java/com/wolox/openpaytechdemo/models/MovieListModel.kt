@@ -3,10 +3,10 @@ package com.wolox.openpaytechdemo.models
 import com.google.gson.annotations.SerializedName
 
 data class MovieListModel(
-    @SerializedName("page") val page: Int,
-    @SerializedName("results") val results : List<Movie>,
-    @SerializedName("total_results") val totalResults: Int,
-    @SerializedName("total_pages") val totalPages: Int
+    @SerializedName("page") var page: Int,
+    @SerializedName("results") var results : List<Movie>,
+    @SerializedName("total_results") var totalResults: Int,
+    @SerializedName("total_pages") var totalPages: Int
 )
 
 data class Movie(
