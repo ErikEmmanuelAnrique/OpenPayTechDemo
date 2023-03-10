@@ -1,5 +1,6 @@
 package com.wolox.openpaytechdemo.ui.movies
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -27,7 +28,7 @@ class MoviesViewModel : ViewModel() {
     private val _popularMoviesList: MutableLiveData<List<Movie>> = MutableLiveData(listOf())
     val popularMoviesList: LiveData<List<Movie>> = _popularMoviesList
 
-
+    //Todo agregar movie dto
     private fun moviesFlow(result: Response<MovieListModel>): Flow<DataState<MovieListModel>> = flow {
         emit(DataState.Loading())
         if (result.isSuccessful) {

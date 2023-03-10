@@ -20,21 +20,24 @@ class MoviesFragment : Fragment() {
         viewModel.getMovies()
         with(binding) {
             //TODO paging and store locally
+            val popularMoviesAdapter = MoviesListAdapter()
+            popularMoviesCarousel.adapter = popularMoviesAdapter
             val popularMoviesObserver = Observer<List<Movie>> {
-                popularMoviesCarousel.adapter = MoviesListAdapter(it)
+                popularMoviesAdapter.submitList(it)
             }
             viewModel.popularMoviesList.observe(this@MoviesFragment, popularMoviesObserver)
             popularMoviesCarousel.layoutManager = LinearLayoutManager(context).apply {
                 orientation = LinearLayoutManager.HORIZONTAL
             }
+            val topRatedMoviesAdapter = MoviesListAdapter()
+            topRatedMoviesCarousel.adapter = topRatedMoviesAdapter
             val topRatedMoviesObserver = Observer<List<Movie>> {
-                topRatedMoviesCarousel.adapter = MoviesListAdapter(it)
+                topRatedMoviesAdapter.submitList(it)
             }
             viewModel.topRatedMoviesList.observe(this@MoviesFragment, topRatedMoviesObserver)
             topRatedMoviesCarousel.layoutManager = LinearLayoutManager(context).apply {
                 orientation = LinearLayoutManager.HORIZONTAL
             }
-            topRatedMoviesCarousel.adapter = MoviesListAdapter(listOf())
         }
         super.onCreate(savedInstanceState)
     }
