@@ -20,37 +20,39 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:text="@string/placeholder_user"
+        style="@style/Title"
         app:layout_constraintBottom_toBottomOf="@id/profilePicture"
         app:layout_constraintStart_toEndOf="@id/profilePicture"
-        app:layout_constraintTop_toTopOf="@id/profilePicture"
-        tools:text="sample text" />
+        app:layout_constraintTop_toTopOf="@id/profilePicture" />
 
     <TextView
         android:id="@+id/reviewsCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/labels_spacing"
+        android:text="@string/user_total_reviews"
         app:layout_constraintStart_toStartOf="@id/userName"
-        app:layout_constraintTop_toBottomOf="@id/userName"
-        tools:text="sample text" />
+        app:layout_constraintTop_toBottomOf="@id/userName" />
 
     <TextView
         android:id="@+id/imagesCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/labels_spacing"
+        android:text="@string/uploaded_images"
         app:layout_constraintStart_toStartOf="@id/reviewsCount"
-        app:layout_constraintTop_toBottomOf="@id/reviewsCount"
-        tools:text="sample text" />
+        app:layout_constraintTop_toBottomOf="@id/reviewsCount" />
 
     <TextView
         android:id="@+id/lastReviewsTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimen_32dp"
+        android:text="@string/last_reviews"
+        style="@style/Title"
         app:layout_constraintStart_toStartOf="@id/profilePicture"
-        app:layout_constraintTop_toBottomOf="@id/profilePicture"
-        tools:text="Last Reviews" />
+        app:layout_constraintTop_toBottomOf="@id/profilePicture" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/lastReviewsRV"
@@ -64,9 +66,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimen_32dp"
+        android:text="@string/images"
+        style="@style/Title"
         app:layout_constraintStart_toStartOf="@id/lastReviewsTitle"
-        app:layout_constraintTop_toBottomOf="@id/lastReviewsRV"
-        tools:text="Images" />
+        app:layout_constraintTop_toBottomOf="@id/lastReviewsRV"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/imagesRV"

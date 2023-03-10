@@ -6,4 +6,9 @@
     <string name="top_rated_movies_label">Top Rated</string>
     <string name="title_locations">Locations</string>
     <string name="title_upload">Upload</string>
+    <string name="user_total_reviews">User total reviews: %d</string>
+    <string name="uploaded_images">Uploaded images: %d</string>
+    <string name="last_reviews">Last Reviews</string>
+    <string name="images">Images</string>
+    <string name="placeholder_user">User</string>
 </resources>
