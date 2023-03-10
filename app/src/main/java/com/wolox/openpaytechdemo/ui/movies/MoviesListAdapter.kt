@@ -1,18 +1,16 @@
 package com.wolox.openpaytechdemo.ui.movies
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.wolox.openpaytechdemo.databinding.MovieViewHolderBinding
 import com.wolox.openpaytechdemo.models.Movie
 
-class MoviesListAdapter(private val dataset: List<Movie>) :
-    RecyclerView.Adapter<MoviesListAdapter.MovieViewHolder>() {
-
-
-
+class MoviesListAdapter() :
+    ListAdapter<Movie, MoviesListAdapter.MovieViewHolder>(MoviesCallback) {
     class MovieViewHolder(private val binding: MovieViewHolderBinding) :
         RecyclerView.ViewHolder(binding.root) {
         private val BASE_URL_IMG = "https://image.tmdb.org/t/p/w500"
@@ -31,8 +29,14 @@ class MoviesListAdapter(private val dataset: List<Movie>) :
     )
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
-        holder.bind(dataset[position])
+        holder.bind(currentList[position])
     }
 
-    override fun getItemCount() = dataset.size
+    object MoviesCallback : DiffUtil.ItemCallback<Movie>() {
+        override fun areItemsTheSame(oldItem: Movie, newItem: Movie) =
+            oldItem.id == newItem.id
+        override fun areContentsTheSame(oldItem: Movie, newItem: Movie) =
+            oldItem == newItem
+    }
 }
+
