@@ -11,6 +11,7 @@ import com.wolox.openpaytechdemo.repository.MoviesRepository
 import com.wolox.openpaytechdemo.usecases.GetPopularMovies
 import com.wolox.openpaytechdemo.usecases.GetTopRatedMovies
 import com.wolox.openpaytechdemo.util.DataState
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.cancellable
 import kotlinx.coroutines.flow.catch
@@ -23,9 +24,11 @@ class MoviesViewModel : ViewModel() {
     private val topRatedMoviesUseCase = GetTopRatedMovies()
     private val popularMoviesUseCase = GetPopularMovies()
 
-    private val _topRatedMoviesResponse: MutableLiveData<DataState<MovieListModel>> = MutableLiveData()
+    private val _topRatedMoviesResponse: MutableLiveData<DataState<MovieListModel>> =
+        MutableLiveData()
     val topRatedMoviesResponse: LiveData<DataState<MovieListModel>> = _topRatedMoviesResponse
-    private val _popularMoviesResponse: MutableLiveData<DataState<MovieListModel>> = MutableLiveData()
+    private val _popularMoviesResponse: MutableLiveData<DataState<MovieListModel>> =
+        MutableLiveData()
     val popularMoviesResponse: LiveData<DataState<MovieListModel>> = _popularMoviesResponse
     private val _topRatedMoviesList: MutableLiveData<List<Movie>> = MutableLiveData(listOf())
     val topRatedMoviesList: LiveData<List<Movie>> = _topRatedMoviesList
@@ -36,17 +39,25 @@ class MoviesViewModel : ViewModel() {
 
     fun getMovies() {
         viewModelScope.launch {
-            topRatedMoviesUseCase.get().cancellable().collect() {
-                    result -> _topRatedMoviesResponse.value = result
-                result.data?.let {
-                    _topRatedMoviesList.value = it.results
+            try {
+                topRatedMoviesUseCase.get().cancellable().collect() { result ->
+                    _topRatedMoviesResponse.value = result
+                    result.data?.let {
+                        _topRatedMoviesList.value = it.results
+                    }
                 }
+            } catch (e: CancellationException) {
+
             }
-           popularMoviesUseCase.get().cancellable().collect() {
-                result -> _popularMoviesResponse.value = result
-                result.data?.let {
-                    _popularMoviesList.value = it.results
+            try {
+                popularMoviesUseCase.get().cancellable().collect() { result ->
+                    _popularMoviesResponse.value = result
+                    result.data?.let {
+                        _popularMoviesList.value = it.results
+                    }
                 }
+            } catch (e: CancellationException) {
+
             }
         }
     }
