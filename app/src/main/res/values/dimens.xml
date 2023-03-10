@@ -5,4 +5,8 @@
     <dimen name="movie_image_height">160dp</dimen>
     <dimen name="viewholder_padding">8dp</dimen>
     <dimen name="title_size">20sp</dimen>
+    <dimen name="profile_image_size">120dp</dimen>
+    <dimen name="labels_spacing">4dp</dimen>
+    <dimen name="dimen_32dp">32dp</dimen>
+    <dimen name="dimen_8dp">8dp</dimen>
 </resources>
