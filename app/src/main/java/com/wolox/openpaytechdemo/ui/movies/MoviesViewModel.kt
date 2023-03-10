@@ -8,6 +8,8 @@ import androidx.lifecycle.viewModelScope
 import com.wolox.openpaytechdemo.models.Movie
 import com.wolox.openpaytechdemo.models.MovieListModel
 import com.wolox.openpaytechdemo.repository.MoviesRepository
+import com.wolox.openpaytechdemo.usecases.GetPopularMovies
+import com.wolox.openpaytechdemo.usecases.GetTopRatedMovies
 import com.wolox.openpaytechdemo.util.DataState
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.cancellable
@@ -18,6 +20,8 @@ import retrofit2.Response
 
 class MoviesViewModel : ViewModel() {
     private val moviesRepository = MoviesRepository()
+    private val topRatedMoviesUseCase = GetTopRatedMovies()
+    private val popularMoviesUseCase = GetPopularMovies()
 
     private val _topRatedMoviesResponse: MutableLiveData<DataState<MovieListModel>> = MutableLiveData()
     val topRatedMoviesResponse: LiveData<DataState<MovieListModel>> = _topRatedMoviesResponse
@@ -29,26 +33,16 @@ class MoviesViewModel : ViewModel() {
     val popularMoviesList: LiveData<List<Movie>> = _popularMoviesList
 
     //Todo agregar movie dto
-    private fun moviesFlow(result: Response<MovieListModel>): Flow<DataState<MovieListModel>> = flow {
-        emit(DataState.Loading())
-        if (result.isSuccessful) {
-            emit(DataState.Success(result.body()!!))
-        } else {
-            emit(DataState.Error(result.errorBody().toString()))
-        }
-    }.catch {
-        emit(DataState.Error("Error"))
-    }
 
     fun getMovies() {
         viewModelScope.launch {
-            moviesFlow(moviesRepository.getTopRatedMovies()).cancellable().collect() {
-                result -> _topRatedMoviesResponse.value = result
+            topRatedMoviesUseCase.get().cancellable().collect() {
+                    result -> _topRatedMoviesResponse.value = result
                 result.data?.let {
                     _topRatedMoviesList.value = it.results
                 }
             }
-            moviesFlow(moviesRepository.getPopularMovies()).cancellable().collect() {
+           popularMoviesUseCase.get().cancellable().collect() {
                 result -> _popularMoviesResponse.value = result
                 result.data?.let {
                     _popularMoviesList.value = it.results

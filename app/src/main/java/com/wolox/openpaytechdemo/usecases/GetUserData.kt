@@ -1,4 +1,4 @@
 package com.wolox.openpaytechdemo.usecases
 
-class MoviesUseCase {
+class GetUserData {
 }
